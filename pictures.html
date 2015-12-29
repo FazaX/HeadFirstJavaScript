@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zgadnij co to za obraz</title>
+    <style>
+        body{
+            margin: 20px;
+            position: relative;
+        }
+        img {
+            margin: 20px;
+        }
+    </style>
+    <script>
+        window.onload = init;
+        function init(){
+            var images = document.getElementsByTagName("img");
+            for(var i=0; i < images.length; i++) {
+                //images[i].onclick = imageOnClickHandler;
+                images[i].onmouseover = imageOnMouseOverHandler;
+                images[i].onmouseout = imageOnMouseOutHandler;
+            }
+        }
+        function imageOnClickHandler(eventObj) {
+            var image = eventObj.target;
+            image.src = "graphics/" + image.id + ".jpg";
+            setTimeout(
+                    function(){
+                        image.src = "graphics/" + image.id + "blur.jpg"
+                    },
+                    2000);
+        }
+
+
+        function imageOnMouseOverHandler(eventObj){
+            var image = eventObj.target;
+            image.src = "graphics/" + image.id + ".jpg";
+        }
+        function imageOnMouseOutHandler(eventObj){
+            var image = eventObj.target;
+            image.src = "graphics/" + image.id + "blur.jpg"
+        }
+
+    </script>
+</head>
+<body>
+    <img id="zero" src="graphics/zeroblur.jpg">
+    <img id="one" src="graphics/oneblur.jpg">
+    <img id="two" src="graphics/twoblur.jpg">
+    <img id="three" src="graphics/threeblur.jpg">
+    <img id="four" src="graphics/fourblur.jpg">
+    <img id="five" src="graphics/fiveblur.jpg">
+</body>
+</html>
